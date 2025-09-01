@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>D Fence Finance Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0f5b3c" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <!-- Replace with your SVG/logo -->
+      <div class="logo">D</div>
+      <div class="title">
+        <h1>D Fence Finance</h1>
+        <p>Fast payment plans for fencing projects</p>
+      </div>
+    </div>
+    <button id="themeToggle" aria-label="Toggle theme">☾</button>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Inputs</h2>
+      <div class="grid">
+        <label>
+          <span>Project amount ($)</span>
+          <input id="amount" type="number" inputmode="decimal" min="0" step="0.01" value="8000" />
+        </label>
+        <label>
+          <span>Down payment ($)</span>
+          <input id="down" type="number" inputmode="decimal" min="0" step="0.01" value="0" />
+        </label>
+        <label>
+          <span>APR (%)</span>
+          <input id="apr" type="number" inputmode="decimal" min="0" step="0.01" value="6.5" />
+        </label>
+        <label>
+          <span>Term (months)</span>
+          <input id="term" type="number" inputmode="numeric" min="1" step="1" value="12" />
+        </label>
+        <label>
+          <span>Fees ($, optional)</span>
+          <input id="fees" type="number" inputmode="decimal" min="0" step="0.01" value="0" />
+        </label>
+        <label>
+          <span>Start date</span>
+          <input id="startDate" type="date" />
+        </label>
+      </div>
+
+      <div class="presets">
+        <button data-preset data-amount="4000" data-term="6" data-apr="0">4k • 6 mo • 0%</button>
+        <button data-preset data-amount="8000" data-term="12" data-apr="6.5">8k • 12 mo • 6.5%</button>
+        <button data-preset data-amount="12000" data-term="24" data-apr="12">12k • 24 mo • 12%</button>
+      </div>
+
+      <div class="actions">
+        <button id="copyLink">Copy shareable link</button>
+        <button id="reset">Reset</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Summary</h2>
+      <div class="summary">
+        <div>
+          <div class="label">Monthly payment</div>
+          <div id="monthly" class="value">$0.00</div>
+        </div>
+        <div>
+          <div class="label">Total paid</div>
+          <div id="totalPaid" class="value">$0.00</div>
+        </div>
+        <div>
+          <div class="label">Total interest</div>
+          <div id="totalInterest" class="value">$0.00</div>
+        </div>
+        <div>
+          <div class="label">Payoff date</div>
+          <div id="payoffDate" class="value">—</div>
+        </div>
+      </div>
+      <p class="fineprint">Estimates only. Final terms subject to approval and signed agreement.</p>
+    </section>
+
+    <section class="card">
+      <h2>Amortization schedule</h2>
+      <div class="tableWrap">
+        <table id="schedule">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Payment</th>
+              <th>Interest</th>
+              <th>Principal</th>
+              <th>Balance</th>
+              <th>Due</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© D Fence</span>
+    <a href="#" id="print">Print</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
